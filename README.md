@@ -1,73 +1,140 @@
-# React + TypeScript + Vite
+# Pagination using React Query (React Web)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project demonstrates efficient pagination in a **React (Web)** application using **React Query**.  
+It focuses on correct caching, smooth navigation between pages, proper loading states, and performance optimizations.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Objective
 
-## React Compiler
+Implement page-based pagination using React Query while ensuring:
+- Efficient data fetching
+- Cached pages when navigating back and forth
+- Smooth UI without flickering
+- Clean and reusable code structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Paginated user list using a real paginated API
+- **Previous / Next** buttons for navigation
+- Cached data when moving between pages
+- Skeleton loader on **initial load only**
+- Loader on page change without replacing existing data
+- Error state with retry button
+- Empty state handling
+- Prefetching of next page for smoother UX
+- No unnecessary API calls when returning to previous pages
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🌐 API Used
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+DummyJSON Users API:
+https://dummyjson.com/users?limit=20&skip=0
+
+
+---
+
+## 🧠 Pagination Logic (Plain English)
+
+The API provides:
+- `skip`: how many items are already fetched
+- `limit`: items per page
+- `total`: total number of users
+
+To decide if another page exists:
+skip + limit < total
+
+
+If this condition is true, the next page can be fetched.  
+Otherwise, pagination stops.
+
+This logic prevents extra API calls and ensures correct pagination.
+
+---
+
+## ⚙️ Tech Stack
+
+- React
+- TypeScript
+- @tanstack/react-query
+- DummyJSON API
+
+---
+
+## 📁 Folder Structure
+
+```
+src/
+├── api/
+│ └── users.api.ts
+├── hooks/
+│ └── useUsers.ts
+├── components/
+│ ├── UserItem/
+│ ├── SkeletonList/
+│ ├── ErrorState/
+│ └── EmptyState/
+├── types/
+│ └── types.ts
+├── App.tsx
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🛠 Setup Instructions
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/Shivampurbia/pagination-list.git
+cd pagination-list
 ```
+## 2️⃣ Install Dependencies
+```bash
+npm install
+```
+
+## 3️⃣ Run the App
+```bash
+npm run dev
+```
+## ⚡ Performance Optimizations
+
+- Used `staleTime` to prevent unnecessary refetching
+- Cached paginated data using page-based query keys
+- Prefetched next page for faster navigation
+- Used `keepPreviousData` to avoid UI flicker
+- Disabled refetch on window focus and component remount
+- Memoized list items to reduce unnecessary re-renders
+
+---
+
+## ✅ Requirements Covered
+
+- Paginated list with real API data
+- Previous / Next buttons for navigation
+- Cache maintained when moving between pages
+- Loading and error states handled properly
+- Skeleton loader implemented
+- Prefetching for next pages
+- Clean and readable code structure
+- Performance optimizations applied
+
+---
+
+## 📌 Notes
+
+- Skeleton loader appears only on the initial data load
+- Page navigation does not trigger unnecessary API calls
+- UI remains smooth without flickering
+- Cached data is reused when navigating back to previous pages
+
+---
+
+## 👨‍💻 Author
+
+Built as part of a pagination assignment using **React Query (Web)**.

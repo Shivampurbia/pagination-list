@@ -6,7 +6,6 @@ export interface User {
   age: number;
   gender: string;
   username: string;
-  // add other fields if needed
 }
 
 export interface UsersResponse {

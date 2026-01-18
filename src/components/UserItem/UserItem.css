@@ -1,0 +1,52 @@
+.user-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 14px 16px;
+  margin-bottom: 12px;
+
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  max-width: 100%;
+}
+
+/* Avatar with initials */
+.user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  background: #1b9ed2;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Text container */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Name */
+.user-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #1f2937;
+}
+
+/* Email */
+.user-email {
+  font-size: 13px;
+  color: #6b7280;
+}

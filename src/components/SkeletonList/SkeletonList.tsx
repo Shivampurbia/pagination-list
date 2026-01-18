@@ -3,7 +3,7 @@ import "./SkeletonList.css";
 const SkeletonList = () => {
   return (
     <div className="skeleton-list">
-      {Array.from({ length: 6 }).map((_, i) => (
+      {Array.from({ length: 10 }).map((_, i) => (
         <div key={i} className="skeleton-card">
           <div className="skeleton-avatar" />
           <div className="skeleton-content">

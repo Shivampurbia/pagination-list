@@ -1,29 +1,14 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import UserList from "./components/UserList";
-
+import UserList from "./components/UserList/UserList";
+import "./App.css";
 const queryClient = new QueryClient();
 
 const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <div
-        style={{
-          display: "flex",
-          width: "100vw",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "100vh",
-          background: "#f5f5f5",
-          padding: "16px",
-        }}
-      >
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "90vw", // 👈 responsive to window size
-          }}
-        >
+      <div className="container">
+        <div className="subcontainer">
           <UserList />
         </div>
       </div>

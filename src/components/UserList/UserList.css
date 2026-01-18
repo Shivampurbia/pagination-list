@@ -1,0 +1,17 @@
+.user-list {
+  width: 100%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.page-indicator {
+  margin-top: 8px;
+  text-align: center;
+  color: gray;
+  font-size: 14px;
+}

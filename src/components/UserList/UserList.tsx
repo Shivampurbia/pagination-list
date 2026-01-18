@@ -9,7 +9,7 @@ import UserItem from "../UserItem/UserItem";
 
 const UserList: React.FC = () => {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError, isFetching, refetch } = useUsers(page);
+  const { data, isLoading, isError, isFetching, refetch, isRefetching } = useUsers(page);
 
   const users: User[] = data != undefined ? data?.users || [] : [];
   const emptyData = !isLoading && users.length === 0;
@@ -24,7 +24,7 @@ const UserList: React.FC = () => {
   
   if (isLoading) return <SkeletonList />;
   if (isError)
-    return <ErrorState onRetry={refetch} message="Error loading users" />;
+    return <ErrorState refetching={isRefetching} onRetry={refetch} message="Error loading users" />;
   if (emptyData) return <EmptyState message="No users found." />;
   console.log(data, " data of page", page);
 
